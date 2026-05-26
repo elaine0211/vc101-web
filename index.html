@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Elaine Wang｜Frontend Web Designer / UI Designer / Front-End Developer</title>
+  <meta name="description" content="Elaine Wang 是前端網頁設計師、UI 設計與切版工程師，專注於 RWD 響應式網站、Bootstrap 5、HTML/CSS/JavaScript、SEO/GEO 優化、企業官網、行銷活動頁與 AI 輔助工作流程整合。" />
+
+  <meta property="og:title" content="Elaine Wang｜Turning Ideas Into Digital Experiences" />
+  <meta property="og:description" content="整合設計、程式、SEO 與 AI 工作流程，打造現代品牌網站與有溫度的數位體驗。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/eff6ff/2563eb?text=Elaine+Wang" />
+  <meta name="theme-color" content="#2563eb" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      /* Brand palette (from provided color specs) */
+      --blue: #0B6FB8; /* Primary Blue */
+      --teal: #1AA7A1; /* Secondary Teal */
+      --navy: #1E3A5F; /* Secondary Navy */
+      --gold: #E0A63A; /* Accent Gold */
+      --orange: #F28C28; /* Accent Orange */
+      --neutral-white: #FFFFFF;
+      --neutral-light: #F3F6F8;
+      --text-gray: #667085;
+      --ink: #0f172a;
+      --muted: #667085;
+      --line: rgba(102, 112, 133, 0.18);
+      --soft-blue: #F3F6F8;
+      /* compatibility aliases used in the stylesheet */
+      --purple: var(--navy);
+      --mint: var(--teal);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(11, 111, 184, 0.14), transparent 28%),
+        radial-gradient(circle at 84% 12%, rgba(30, 58, 95, 0.12), transparent 30%),
+        radial-gradient(circle at 82% 78%, rgba(26, 167, 161, 0.10), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 42%, #ffffff 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    .font-display {
+      letter-spacing: -0.045em;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+
+    .premium-border {
+      position: relative;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background:
+        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(135deg, rgba(11, 111, 184, 0.42), rgba(30, 58, 95, 0.32), rgba(26, 167, 161, 0.26)) border-box;
+    }
+
+    /* Theme overrides for common Tailwind utility classes to match brand palette */
+    .text-blue-600 { color: var(--blue) !important; }
+    .bg-blue-50 { background-color: rgba(11,111,184,0.06) !important; }
+    .text-violet-700 { color: var(--purple) !important; }
+    .bg-violet-50 { background-color: rgba(30,58,95,0.06) !important; }
+    .text-emerald-700 { color: var(--mint) !important; }
+    .bg-emerald-50 { background-color: rgba(26,167,161,0.06) !important; }
+    .shadow-blue-500\/20 { box-shadow: 0 18px 40px rgba(11,111,184,0.20) !important; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--blue), var(--purple), var(--mint));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .soft-grid {
+      background-image:
+        linear-gradient(rgba(11, 111, 184, 0.065) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(11, 111, 184, 0.065) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.78), transparent 88%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.78), transparent 88%);
+    }
+
+    .nav-link {
+      position: relative;
+      color: #334155;
+      transition: color 0.25s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), var(--purple), var(--mint));
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--blue);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .navbar-scrolled {
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+      border-color: rgba(148, 163, 184, 0.28);
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3.15rem;
+      padding: 0.85rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      box-shadow: 0 18px 36px rgba(11, 111, 184, 0.22);
+    }
+
+    .btn-secondary {
+      color: #1d4ed8;
+      background:
+        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(135deg, var(--blue), var(--purple), var(--mint)) border-box;
+      border: 1px solid transparent;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 54px rgba(11, 111, 184, 0.22), 0 0 0 6px rgba(26, 167, 161, 0.10);
+    }
+
+    .btn-primary:hover::after,
+    .btn-secondary:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn-primary::after,
+    .btn-secondary::after {
+      content: "Status: Ready to Connect";
+      position: absolute;
+      right: 1rem;
+      bottom: 0.28rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      color: inherit;
+      pointer-events: none;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(11, 111, 184, 0.14);
+      background: rgba(239, 246, 255, 0.8);
+      color: #1d4ed8;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card-lift {
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+    .card-lift:hover {
+      transform: translateY(-8px);
+      border-color: rgba(11, 111, 184, 0.38);
+      box-shadow: 0 30px 70px rgba(15, 23, 42, 0.12), 0 0 0 5px rgba(11, 111, 184, 0.055);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .floating-node {
+      animation: floatNode 7s ease-in-out infinite;
+    }
+
+    .floating-node:nth-child(2) {
+      animation-delay: 1.4s;
+    }
+
+    .floating-node:nth-child(3) {
+      animation-delay: 2.5s;
+    }
+
+    @keyframes floatNode {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(12px, -16px, 0) scale(1.05); }
+    }
+
+    .data-line {
+      stroke-dasharray: 8 12;
+      animation: dataFlow 7s linear infinite;
+    }
+
+    @keyframes dataFlow {
+      to { stroke-dashoffset: -120; }
+    }
+
+    #tech-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .mobile-panel {
+      transform: translateY(-12px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    }
+
+    .mobile-panel.is-open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 767px) {
+      #tech-canvas {
+        opacity: 0.28;
+      }
+
+      .btn-primary::after,
+      .btn-secondary::after {
+        display: none;
+      }
+
+      .nav-link::after {
+        bottom: -4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="tech-canvas" aria-hidden="true"></canvas>
+
+  <header id="site-header" class="fixed left-0 top-0 z-50 w-full border-b border-transparent transition-all duration-300">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Primary navigation">
+      <a href="#home" class="group flex items-center gap-3" aria-label="Elaine Wang Home">
+        <span class="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-blue-600 via-violet-600 to-emerald-400 text-sm font-black text-white shadow-lg shadow-blue-500/20">
+          EW
+        </span>
+        <span class="leading-tight">
+          <span class="block text-sm font-black tracking-tight text-slate-950">Elaine Wang</span>
+          <span class="block text-xs font-semibold text-slate-500">Design · Code · SEO · AI</span>
+        </span>
+      </a>
+
+      <ul class="hidden items-center gap-7 text-sm font-bold lg:flex">
+        <li><a class="nav-link" href="#home">Home 首頁</a></li>
+        <li><a class="nav-link" href="#about">About 關於 Elaine</a></li>
+        <li><a class="nav-link" href="#expertise">Expertise 專業能力</a></li>
+        <li><a class="nav-link" href="#services">Services 服務項目</a></li>
+        <li><a class="nav-link" href="#portfolio">Portfolio 實戰案例</a></li>
+        <li><a class="nav-link" href="#insights">Insights 技術觀點</a></li>
+        <li><a class="nav-link" href="#contact">Contact 預約諮詢</a></li>
+      </ul>
+
+      <button id="menu-toggle" class="glass inline-flex h-11 w-11 items-center justify-center rounded-2xl text-slate-800 lg:hidden" type="button" aria-label="開啟手機選單" aria-controls="mobile-menu" aria-expanded="false">
+        <span class="sr-only">Open menu</span>
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-panel absolute left-4 right-4 top-[76px] rounded-3xl glass p-4 lg:hidden">
+      <ul class="grid gap-2 text-sm font-bold">
+        <li><a class="mobile-link block rounded-2xl px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-700" href="#home">Home 首頁</a></li>
+        <li><a class="mobile-link block rounded-2xl px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-700" href="#about">About 關於 Elaine</a></li>
+        <li><a class="mobile-link block rounded-2xl px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-700" href="#expertise">Expertise 專業能力</a></li>
+        <li><a class="mobile-link block rounded-2xl px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-700" href="#services">Services 服務項目</a></li>
+        <li><a class="mobile-link block rounded-2xl px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-700" href="#portfolio">Portfolio 實戰案例</a></li>
+        <li><a class="mobile-link block rounded-2xl px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-700" href="#insights">Insights 技術觀點</a></li>
+        <li><a class="mobile-link block rounded-2xl px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-700" href="#contact">Contact 預約諮詢</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="relative min-h-screen overflow-hidden px-4 pt-32 sm:px-6 lg:px-8">
+      <div class="soft-grid absolute inset-0 -z-10" aria-hidden="true"></div>
+
+      <div class="absolute left-1/2 top-28 -z-10 h-[38rem] w-[38rem] -translate-x-1/2 rounded-full bg-blue-100/50 blur-3xl" aria-hidden="true"></div>
+
+      <div class="mx-auto grid max-w-7xl items-center gap-12 pb-20 pt-8 lg:grid-cols-[1.05fr_0.95fr] lg:pb-28 lg:pt-14">
+        <div class="reveal">
+          <p class="section-kicker mb-6">
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+            Frontend Web Designer / UI Designer / Front-End Developer
+          </p>
+
+          <h1 class="font-display max-w-5xl text-4xl font-black leading-[1.08] text-slate-950 sm:text-5xl lg:text-7xl">
+            Turning Ideas Into
+            <span class="gradient-text block">Digital Experiences</span>
+          </h1>
+
+          <p class="mt-4 text-lg font-bold text-slate-700 sm:text-xl">
+            將想法轉化為有溫度的數位體驗
+          </p>
+
+          <div class="mt-6 min-h-[3.4rem] rounded-3xl border border-blue-100 bg-white/70 px-5 py-4 shadow-sm backdrop-blur">
+            <p class="text-base font-black text-blue-700 sm:text-xl">
+              <span id="typewriter"></span><span class="animate-pulse">|</span>
+            </p>
+            <p id="typewriter-zh" class="mt-1 text-sm font-semibold text-slate-500"></p>
+          </div>
+
+          <p class="mt-7 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+            Elaine Wang helps brands transform ideas, content, and visual concepts into elegant, responsive, SEO-ready digital experiences.
+            <span class="mt-2 block text-slate-500">
+              Elaine Wang 協助品牌將想法、內容與視覺概念，轉化為優雅、響應式且具備 SEO 架構的數位體驗。
+            </span>
+          </p>
+
+          <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+            <a href="#portfolio" class="btn-secondary" aria-label="查看 Elaine Wang 的作品案例">
+              View My Work
+              <span class="text-xs font-semibold opacity-75">查看作品案例</span>
+            </a>
+            <a href="https://calendar.app.google/go77dhwZQzTGKjSE8" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="另開新分頁預約諮詢">
+              Book a Consultation
+              <span class="text-xs font-semibold opacity-80">預約諮詢</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal relative">
+          <div class="glass relative mx-auto max-w-xl overflow-hidden rounded-[2rem] p-6 sm:p-8">
+            <div class="absolute right-6 top-6 rounded-full bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-600">
+              Available for selected projects
+            </div>
+
+            <div class="mt-10 rounded-[1.5rem] bg-gradient-to-br from-blue-50 via-white to-violet-50 p-5">
+              <div class="flex items-center justify-between border-b border-slate-200/70 pb-4">
+                <div>
+                  <p class="text-xs font-black uppercase tracking-[0.2em] text-blue-600">Brand System</p>
+                  <h2 class="mt-1 text-2xl font-black text-slate-950">Design × Code Flow</h2>
+                </div>
+                <div class="grid h-12 w-12 place-items-center rounded-2xl bg-white shadow-sm">
+                  <span class="text-xl">✦</span>
+                </div>
+              </div>
+
+              <div class="mt-6 grid gap-4">
+                <div class="premium-border rounded-3xl p-4">
+                  <p class="text-sm font-black text-slate-950">01 / UI Strategy</p>
+                  <p class="mt-1 text-sm leading-6 text-slate-500">品牌調性、視覺層級、使用者動線與內容節奏。</p>
+                </div>
+                <div class="premium-border rounded-3xl p-4">
+                  <p class="text-sm font-black text-slate-950">02 / Front-End Build</p>
+                  <p class="mt-1 text-sm leading-6 text-slate-500">HTML、CSS、JavaScript、Bootstrap 5 與 RWD 實作。</p>
+                </div>
+                <div class="premium-border rounded-3xl p-4">
+                  <p class="text-sm font-black text-slate-950">03 / SEO-ready Structure</p>
+                  <p class="mt-1 text-sm leading-6 text-slate-500">Heading、Schema、alt、語意結構與搜尋可理解性。</p>
+                </div>
+              </div>
+            </div>
+
+            <svg class="mt-8 h-40 w-full" viewBox="0 0 620 160" role="img" aria-label="AI workflow data flow illustration">
+              <defs>
+                <linearGradient id="flowGradient" x1="0" x2="1">
+                  <stop offset="0%" stop-color="#0B6FB8"/>
+                  <stop offset="50%" stop-color="#1E3A5F"/>
+                  <stop offset="100%" stop-color="#E0A63A"/>
+                </linearGradient>
+              </defs>
+              <path class="data-line" d="M35 92 C120 20, 205 140, 300 76 S480 35, 580 92" fill="none" stroke="url(#flowGradient)" stroke-width="3" stroke-linecap="round"/>
+              <circle class="floating-node" cx="70" cy="82" r="13" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+              <circle class="floating-node" cx="310" cy="78" r="17" fill="#f5f3ff" stroke="#7c3aed" stroke-width="3"/>
+              <circle class="floating-node" cx="555" cy="90" r="13" fill="#ecfdf5" stroke="#10b981" stroke-width="3"/>
+              <text x="44" y="130" fill="#475569" font-size="13" font-weight="700">Design</text>
+              <text x="285" y="130" fill="#475569" font-size="13" font-weight="700">Code</text>
+              <text x="530" y="130" fill="#475569" font-size="13" font-weight="700">SEO</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div class="reveal">
+          <p class="section-kicker">About Elaine</p>
+          <h2 class="font-display mt-5 text-3xl font-black text-slate-950 sm:text-4xl">
+            專業但不冰冷，穩定且具創造力。
+          </h2>
+        </div>
+        <article class="reveal glass rounded-[2rem] p-6 sm:p-8">
+          <p class="text-lg leading-9 text-slate-600">
+            我是一位前端網頁設計師／UI 設計與切版工程師，具備多年企業官網、活動頁、行銷頁與數位內容製作經驗。
+            長期參與教育產業、企業品牌網站、行銷活動頁與數位內容專案，負責網站視覺設計、前端切版、SEO 架構優化與使用者體驗規劃。
+          </p>
+          <p class="mt-5 text-lg leading-9 text-slate-600">
+            我擅長整合設計與技術，將品牌形象、互動體驗、RWD 響應式設計、SEO 架構與網站效能結合，
+            打造兼具美感、實用性與搜尋能見度的數位網站。
+          </p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-3">
+            <div class="rounded-3xl bg-blue-50 p-5">
+              <p class="text-2xl font-black text-blue-700">Design</p>
+              <p class="mt-2 text-sm font-semibold leading-6 text-slate-500">視覺層級、品牌感與 UI 細節。</p>
+            </div>
+            <div class="rounded-3xl bg-violet-50 p-5">
+              <p class="text-2xl font-black text-violet-700">Code</p>
+              <p class="mt-2 text-sm font-semibold leading-6 text-slate-500">乾淨結構、RWD 與互動整合。</p>
+            </div>
+            <div class="rounded-3xl bg-emerald-50 p-5">
+              <p class="text-2xl font-black text-emerald-700">SEO</p>
+              <p class="mt-2 text-sm font-semibold leading-6 text-slate-500">語意架構、內容流與搜尋能見度。</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="expertise" class="px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="section-kicker">Expertise</p>
+          <h2 class="font-display mt-5 text-3xl font-black text-slate-950 sm:text-4xl">
+            專業能力 Expertise
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            從 UI 視覺到前端切版，從 SEO 架構到 AI 輔助流程，讓網站不只好看，也能被理解、被使用、被信任。
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <article class="reveal card-lift glass rounded-[1.7rem] p-6">
+            <h3 class="text-lg font-black text-slate-950">Bootstrap 5 RWD 響應式切版</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-500">支援手機、平板、桌機，建立穩定一致的跨裝置體驗。</p>
+          </article>
+          <article class="reveal card-lift glass rounded-[1.7rem] p-6">
+            <h3 class="text-lg font-black text-slate-950">HTML5 / CSS3 / JavaScript</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-500">語意清楚、樣式模組化，搭配 JS 完成互動與流程整合。</p>
+          </article>
+          <article class="reveal card-lift glass rounded-[1.7rem] p-6">
+            <h3 class="text-lg font-black text-slate-950">jQuery 互動效果整合</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-500">協助既有網站快速加入輪播、展開、滑動與微互動效果。</p>
+          </article>
+          <article class="reveal card-lift glass rounded-[1.7rem] p-6">
+            <h3 class="text-lg font-black text-slate-950">UI / UX 網站視覺設計</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-500">兼顧美感、可讀性、操作動線與品牌信任感。</p>
+          </article>
+          <article class="reveal card-lift glass rounded-[1.7rem] p-6">
+            <h3 class="text-lg font-black text-slate-950">企業官網與品牌網站規劃</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-500">整理網站架構、內容層級與品牌訊息呈現方式。</p>
+          </article>
+          <article class="reveal card-lift glass rounded-[1.7rem] p-6">
+            <h3 class="text-lg font-black text-slate-950">Landing Page 製作</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-500">打造具視覺吸引力、明確 CTA 與轉換節奏的行銷頁。</p>
+          </article>
+          <article class="reveal card-lift glass rounded-[1.7rem] p-6">
+            <h3 class="text-lg font-black text-slate-950">SEO / GEO 網站優化</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-500">優化 Heading、Schema、alt、內容架構與 AI 搜尋可理解性。</p>
+          </article>
+          <article class="reveal card-lift glass rounded-[1.7rem] p-6">
+            <h3 class="text-lg font-black text-slate-950">AI 工具輔助工作流程</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-500">將 AI 應用於內容整理、設計規劃、SEO 與前端開發流程。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="bg-gradient-to-b from-white via-blue-50/50 to-white px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal max-w-3xl">
+          <p class="section-kicker">Services</p>
+          <h2 class="font-display mt-5 text-3xl font-black text-slate-950 sm:text-4xl">
+            服務項目 Services
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            以設計策略為起點、以前端技術落地，建立可維護、可擴充、具搜尋能見度的品牌網站。
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-3">
+          <article class="reveal card-lift rounded-[2rem] border border-slate-200/70 bg-white p-7 shadow-sm">
+            <span class="text-sm font-black text-blue-600">01</span>
+            <h3 class="mt-4 text-xl font-black text-slate-950">RWD Website Development</h3>
+            <p class="mt-1 text-sm font-bold text-slate-500">RWD 響應式網站切版與前端開發</p>
+            <p class="mt-4 leading-7 text-slate-600">使用 HTML、CSS、JavaScript 與 Bootstrap 5，製作可支援手機、平板與桌機的響應式網站，確保版面穩定、結構清楚、瀏覽體驗一致。</p>
+          </article>
+          <article class="reveal card-lift rounded-[2rem] border border-slate-200/70 bg-white p-7 shadow-sm">
+            <span class="text-sm font-black text-blue-600">02</span>
+            <h3 class="mt-4 text-xl font-black text-slate-950">UI / UX Web Design</h3>
+            <p class="mt-1 text-sm font-bold text-slate-500">UI / UX 網站視覺與使用者體驗設計</p>
+            <p class="mt-4 leading-7 text-slate-600">從品牌調性、視覺層級、使用者動線到互動細節，打造清楚、美觀且易於使用的網站介面。</p>
+          </article>
+          <article class="reveal card-lift rounded-[2rem] border border-slate-200/70 bg-white p-7 shadow-sm">
+            <span class="text-sm font-black text-blue-600">03</span>
+            <h3 class="mt-4 text-xl font-black text-slate-950">SEO / GEO Optimization</h3>
+            <p class="mt-1 text-sm font-bold text-slate-500">SEO / GEO 網站結構與搜尋能見度優化</p>
+            <p class="mt-4 leading-7 text-slate-600">協助網站整理標題層級、語意結構、圖片替代文字、結構化資料與內容架構，提升搜尋引擎與 AI 搜尋環境中的可理解性。</p>
+          </article>
+          <article class="reveal card-lift rounded-[2rem] border border-slate-200/70 bg-white p-7 shadow-sm">
+            <span class="text-sm font-black text-blue-600">04</span>
+            <h3 class="mt-4 text-xl font-black text-slate-950">Landing Page Design</h3>
+            <p class="mt-1 text-sm font-bold text-slate-500">行銷活動頁與品牌轉換頁設計</p>
+            <p class="mt-4 leading-7 text-slate-600">設計並製作具備視覺吸引力、明確行動呼籲與良好轉換動線的活動頁、招生頁、產品頁與行銷頁。</p>
+          </article>
+          <article class="reveal card-lift rounded-[2rem] border border-slate-200/70 bg-white p-7 shadow-sm">
+            <span class="text-sm font-black text-blue-600">05</span>
+            <h3 class="mt-4 text-xl font-black text-slate-950">Website Maintenance & Enhancement</h3>
+            <p class="mt-1 text-sm font-bold text-slate-500">網站維護、版型優化與內容整合</p>
+            <p class="mt-4 leading-7 text-slate-600">協助既有網站進行版面調整、互動效果優化、內容更新、RWD 修正與前端維護。</p>
+          </article>
+          <article class="reveal card-lift rounded-[2rem] border border-slate-200/70 bg-white p-7 shadow-sm">
+            <span class="text-sm font-black text-blue-600">06</span>
+            <h3 class="mt-4 text-xl font-black text-slate-950">AI-assisted Creative Workflow</h3>
+            <p class="mt-1 text-sm font-bold text-slate-500">AI 輔助設計、內容與前端工作流程整合</p>
+            <p class="mt-4 leading-7 text-slate-600">將 AI 工具應用於內容整理、SEO 架構、設計規劃與前端開發流程，提高網站製作效率與整體品質。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div class="max-w-3xl">
+            <p class="section-kicker">Portfolio / Case Studies</p>
+            <h2 class="font-display mt-5 text-3xl font-black text-slate-950 sm:text-4xl">
+              實戰案例 Portfolio / Case Studies
+            </h2>
+          </div>
+          <p class="max-w-md text-base leading-7 text-slate-500">
+            以下為展示用假資料，可後續替換為實際企業官網、行銷活動頁、SEO 優化與 UI/RWD 改版案例。
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-2">
+          <article class="reveal card-lift glass overflow-hidden rounded-[2rem]">
+            <div class="h-52 bg-gradient-to-br from-blue-100 via-white to-violet-100 p-6">
+              <div class="h-full rounded-[1.5rem] border border-white/80 bg-white/60 shadow-inner" role="img" aria-label="企業官網 UI 與前端改版示意圖"></div>
+            </div>
+            <div class="p-7">
+              <p class="text-sm font-black text-blue-600">Case Study 01</p>
+              <h3 class="mt-3 text-2xl font-black text-slate-950">Corporate Website UI & Front-End Renewal</h3>
+              <p class="mt-1 font-bold text-slate-500">企業官網 UI 與前端改版</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">UI Design</span>
+                <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">RWD</span>
+                <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">SEO Structure</span>
+                <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">Front-End</span>
+              </div>
+            </div>
+          </article>
+          <article class="reveal card-lift glass overflow-hidden rounded-[2rem]">
+            <div class="h-52 bg-gradient-to-br from-violet-100 via-white to-emerald-100 p-6">
+              <div class="h-full rounded-[1.5rem] border border-white/80 bg-white/60 shadow-inner" role="img" aria-label="行銷活動頁設計示意圖"></div>
+            </div>
+            <div class="p-7">
+              <p class="text-sm font-black text-blue-600">Case Study 02</p>
+              <h3 class="mt-3 text-2xl font-black text-slate-950">Marketing Landing Page Design</h3>
+              <p class="mt-1 font-bold text-slate-500">行銷活動頁設計</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full bg-violet-50 px-3 py-1 text-xs font-bold text-violet-700">Landing Page</span>
+                <span class="rounded-full bg-violet-50 px-3 py-1 text-xs font-bold text-violet-700">Campaign</span>
+                <span class="rounded-full bg-violet-50 px-3 py-1 text-xs font-bold text-violet-700">Conversion</span>
+                <span class="rounded-full bg-violet-50 px-3 py-1 text-xs font-bold text-violet-700">Responsive</span>
+              </div>
+            </div>
+          </article>
+          <article class="reveal card-lift glass overflow-hidden rounded-[2rem]">
+            <div class="h-52 bg-gradient-to-br from-emerald-100 via-white to-blue-100 p-6">
+              <div class="h-full rounded-[1.5rem] border border-white/80 bg-white/60 shadow-inner" role="img" aria-label="SEO GEO 網站結構優化示意圖"></div>
+            </div>
+            <div class="p-7">
+              <p class="text-sm font-black text-blue-600">Case Study 03</p>
+              <h3 class="mt-3 text-2xl font-black text-slate-950">SEO / GEO Website Optimization</h3>
+              <p class="mt-1 font-bold text-slate-500">SEO / GEO 網站結構優化</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">SEO</span>
+                <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">Schema</span>
+                <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">Heading Structure</span>
+                <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">Content Flow</span>
+              </div>
+            </div>
+          </article>
+          <article class="reveal card-lift glass overflow-hidden rounded-[2rem]">
+            <div class="h-52 bg-gradient-to-br from-blue-100 via-white to-emerald-100 p-6">
+              <div class="h-full rounded-[1.5rem] border border-white/80 bg-white/60 shadow-inner" role="img" aria-label="互動式品牌體驗設計示意圖"></div>
+            </div>
+            <div class="p-7">
+              <p class="text-sm font-black text-blue-600">Case Study 04</p>
+              <h3 class="mt-3 text-2xl font-black text-slate-950">Interactive Brand Experience</h3>
+              <p class="mt-1 font-bold text-slate-500">互動式品牌體驗設計</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">JavaScript</span>
+                <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">Animation</span>
+                <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">UX</span>
+                <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">Micro Interaction</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="insights" class="bg-slate-50/70 px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="section-kicker">Blog / Insights</p>
+          <h2 class="font-display mt-5 text-3xl font-black text-slate-950 sm:text-4xl">
+            技術觀點 Blog / Insights
+          </h2>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-3">
+          <article class="reveal card-lift rounded-[2rem] bg-white p-7 shadow-sm">
+            <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-black text-blue-700">RWD Design</span>
+            <h3 class="mt-5 text-2xl font-black text-slate-950">How RWD Design Improves Brand Trust</h3>
+            <p class="mt-1 font-bold text-slate-500">RWD 設計如何提升品牌信任感</p>
+            <p class="mt-4 leading-7 text-slate-600">RWD 不只是手機版排版，而是讓品牌在任何裝置上都維持專業、清楚與可信任的體驗。</p>
+            <a href="#contact" class="mt-6 inline-flex font-black text-blue-700" aria-label="閱讀 RWD 設計如何提升品牌信任感">Read Insight 閱讀觀點 →</a>
+          </article>
+          <article class="reveal card-lift rounded-[2rem] bg-white p-7 shadow-sm">
+            <span class="rounded-full bg-violet-50 px-3 py-1 text-xs font-black text-violet-700">SEO / GEO</span>
+            <h3 class="mt-5 text-2xl font-black text-slate-950">Why SEO Structure Matters in Modern Websites</h3>
+            <p class="mt-1 font-bold text-slate-500">為什麼現代網站需要重視 SEO 結構</p>
+            <p class="mt-4 leading-7 text-slate-600">好的 Heading、語意標籤、圖片 alt 與結構化資料，能幫助搜尋引擎與 AI 更理解網站內容。</p>
+            <a href="#contact" class="mt-6 inline-flex font-black text-blue-700" aria-label="閱讀為什麼現代網站需要重視 SEO 結構">Read Insight 閱讀觀點 →</a>
+          </article>
+          <article class="reveal card-lift rounded-[2rem] bg-white p-7 shadow-sm">
+            <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-700">AI Workflow</span>
+            <h3 class="mt-5 text-2xl font-black text-slate-950">AI-assisted Workflow for Web Designers</h3>
+            <p class="mt-1 font-bold text-slate-500">網頁設計師如何運用 AI 輔助工作流程</p>
+            <p class="mt-4 leading-7 text-slate-600">AI 可以協助整理內容、規劃 SEO 架構、產出設計方向，讓設計與前端流程更有效率。</p>
+            <a href="#contact" class="mt-6 inline-flex font-black text-blue-700" aria-label="閱讀網頁設計師如何運用 AI 輔助工作流程">Read Insight 閱讀觀點 →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="solutions" class="bg-gradient-to-b from-white via-emerald-50/50 to-white px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal max-w-3xl">
+          <p class="section-kicker">Core Solutions</p>
+          <h2 class="font-display mt-5 text-3xl font-black text-slate-950 sm:text-4xl">
+            核心產品與技術解決方案
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            探索我們精心打造的產品與技術方案，幫助你學習新技能、優化業務流程，以及提升工作效率。
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <article class="reveal card-lift rounded-[2rem] border border-slate-200/70 bg-white p-7 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="h-16 w-16 rounded-2xl bg-blue-50 flex items-center justify-center">
+                <i class="fas fa-laptop text-2xl text-blue-600"></i>
+              </div>
+              <h3 class="text-lg font-black text-slate-950 leading-tight">Vibe Coding</h3>
+            </div>
+            <p class="font-bold text-slate-500 mb-3">行銷數據分析學習圈</p>
+            <p class="leading-7 text-slate-600 mb-6">
+              訂閱 Vibe Coding 行銷數據分析學習圈，跟著我們一同走入行銷數據分析與 vibe coding 自動化的世界。
+            </p>
+            <a href="https://courses.taiwanmds.com/product/information?p=02c0c7b9ec7b11f0b3480242ac110002" target="_blank" rel="noopener noreferrer" class="inline-flex font-black text-blue-700 hover:text-blue-900 transition-colors" aria-label="前往 Vibe Coding 行銷數據分析學習圈">
+              了解詳情 →
+            </a>
+          </article>
+
+          <article class="reveal card-lift rounded-[2rem] border border-slate-200/70 bg-white p-7 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="h-16 w-16 rounded-2xl bg-violet-50 flex items-center justify-center">
+                <i class="fas fa-robot text-2xl text-violet-600"></i>
+              </div>
+              <h3 class="text-lg font-black text-slate-950 leading-tight">保險機器人</h3>
+            </div>
+            <p class="font-bold text-slate-500 mb-3">AI 保險專業服務平台</p>
+            <p class="leading-7 text-slate-600 mb-6">
+              從經驗、法條到正確說明，奇點讓每位保險專業者擁有一位懂法的科技夥伴。
+            </p>
+            <a href="https://judgai.com/" target="_blank" rel="noopener noreferrer" class="inline-flex font-black text-violet-700 hover:text-violet-900 transition-colors" aria-label="前往保險機器人平台">
+              了解詳情 →
+            </a>
+          </article>
+
+          <article class="reveal card-lift rounded-[2rem] border border-slate-200/70 bg-white p-7 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="h-16 w-16 rounded-2xl bg-emerald-50 flex items-center justify-center">
+                <i class="fas fa-microphone text-2xl text-emerald-600"></i>
+              </div>
+              <h3 class="text-lg font-black text-slate-950 leading-tight">SayMind</h3>
+            </div>
+            <p class="font-bold text-slate-500 mb-3">語音轉錄與 AI 筆記平台</p>
+            <p class="leading-7 text-slate-600 mb-6">
+              一站式語音轉錄、AI 筆記整理與自動口條訓練。使用 LangChain 搭建的 RAG 系統，可上傳 PDF 並進行精準問答。
+            </p>
+            <a href="https://judgai.com/saymind" target="_blank" rel="noopener noreferrer" class="inline-flex font-black text-emerald-700 hover:text-emerald-900 transition-colors" aria-label="前往 SayMind 平台">
+              了解詳情 →
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="community" class="bg-slate-50/70 px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="section-kicker">Connect With Me</p>
+          <h2 class="font-display mt-5 text-3xl font-black text-slate-950 sm:text-4xl">
+            多元社群連結 Social Community
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            在我的社群平台上追蹤最新動態、技術分享與合作機會。
+          </p>
+        </div>
+
+        <div class="reveal mt-12 flex flex-wrap justify-center gap-4 sm:gap-6">
+          <a href="https://aistudy.pse.is/linemdsgroup" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-full border-2 border-slate-200 bg-white px-6 py-3 font-bold text-slate-700 transition-all hover:border-green-400 hover:bg-green-50 hover:text-green-700 hover:shadow-lg" aria-label="在 LINE 上追蹤">
+            <i class="fab fa-line text-lg"></i>
+            <span>LINE</span>
+          </a>
+          <a href="https://www.facebook.com/pa.yang.piao" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-full border-2 border-slate-200 bg-white px-6 py-3 font-bold text-slate-700 transition-all hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 hover:shadow-lg" aria-label="在 Facebook 上追蹤">
+            <i class="fab fa-facebook text-lg"></i>
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.linkedin.com/in/howardzhong/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-full border-2 border-slate-200 bg-white px-6 py-3 font-bold text-slate-700 transition-all hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 hover:shadow-lg" aria-label="在 LinkedIn 上追蹤">
+            <i class="fab fa-linkedin text-lg"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/HowardNTUST" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 rounded-full border-2 border-slate-200 bg-white px-6 py-3 font-bold text-slate-700 transition-all hover:border-slate-900 hover:bg-slate-900 hover:text-white hover:shadow-lg" aria-label="在 GitHub 上追蹤">
+            <i class="fab fa-github text-lg"></i>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="form" class="px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl">
+        <div class="reveal rounded-[2.5rem] border border-slate-200/70 bg-white p-8 shadow-sm sm:p-10 lg:p-12">
+          <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <p class="section-kicker">Get Started</p>
+              <h2 class="font-display mt-5 text-3xl font-black text-slate-950 sm:text-4xl">
+                填寫需求表單
+              </h2>
+              <p class="mt-3 text-lg font-bold text-slate-600">Let's Discuss Your Project</p>
+              <p class="mt-5 text-base leading-8 text-slate-600">
+                無論你是企業品牌方、新創團隊或個人創業者，我們誠摯邀請你填寫需求表單，讓我們了解你的專案需求、預期目標與合作方式。我將在 3 個工作日內回覆你的信息。
+              </p>
+              <ul class="mt-6 space-y-3 text-base text-slate-600">
+                <li class="flex items-start gap-3">
+                  <span class="text-blue-600 font-bold mt-1">✓</span>
+                  <span>詳細的專案需求了解</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-blue-600 font-bold mt-1">✓</span>
+                  <span>客製化的服務方案建議</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-blue-600 font-bold mt-1">✓</span>
+                  <span>合理的時程與報價估算</span>
+                </li>
+              </ul>
+            </div>
+            <div class="rounded-[2rem] bg-gradient-to-br from-blue-50 to-violet-50 p-8 flex flex-col justify-center items-center">
+              <div class="mb-6 text-center">
+                <div class="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-md">
+                  <i class="fas fa-clipboard-list text-2xl text-blue-600"></i>
+                </div>
+              </div>
+              <p class="text-center text-sm font-bold text-slate-600 mb-6">
+                通過表單提交你的專案詳情，我會盡快回覆你。
+              </p>
+              <a href="https://forms.gle/kAjAub21RVAtDYFR9" target="_blank" rel="noopener noreferrer" class="btn-primary w-full" aria-label="填寫需求表單">
+                填寫表單
+                <span class="text-xs font-semibold opacity-80">立即開始</span>
+              </a>
+              <p class="mt-4 text-xs text-slate-500 text-center">
+                預計填寫時間：3-5 分鐘
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="px-4 py-20 sm:px-6 lg:px-8">
+      <div class="reveal mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-blue-600 via-violet-600 to-emerald-500 p-[1px] shadow-2xl shadow-blue-500/20">
+        <div class="rounded-[2.45rem] bg-white/92 p-8 backdrop-blur sm:p-12 lg:p-16">
+          <div class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <div>
+              <p class="section-kicker">Contact</p>
+              <h2 class="font-display mt-5 text-3xl font-black text-slate-950 sm:text-5xl">
+                Let’s Build Your Next Digital Experience
+              </h2>
+              <p class="mt-3 text-xl font-bold text-slate-600">一起打造你的下一個數位體驗</p>
+              <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+                如果你正在規劃企業網站、品牌官網、活動頁、SEO 優化或希望將 AI 工具導入設計與前端流程，歡迎預約諮詢。
+              </p>
+            </div>
+            <div class="rounded-[2rem] bg-slate-50 p-6">
+              <p class="rounded-full bg-emerald-50 px-4 py-2 text-center text-sm font-black text-emerald-700">
+                Available for selected projects<br>
+                <span class="text-xs font-bold text-emerald-600">目前開放精選專案合作</span>
+              </p>
+              <a href="https://calendar.app.google/go77dhwZQzTGKjSE8" target="_blank" rel="noopener noreferrer" class="btn-primary mt-6 w-full" aria-label="另開新分頁預約 Elaine Wang 諮詢">
+                Book a Consultation
+                <span class="text-xs font-semibold opacity-80">預約諮詢</span>
+              </a>
+              <p class="mt-5 text-center text-sm font-semibold leading-6 text-slate-500">
+                Design, Code, SEO, and AI-powered workflows for modern brand websites.<br>
+                整合設計、程式、SEO 與 AI 工作流程，打造現代品牌網站。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200/80 px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto flex max-w-7xl flex-col justify-between gap-4 text-sm font-semibold text-slate-500 md:flex-row md:items-center">
+      <p>© <span id="year"></span> Elaine Wang. Turning Ideas Into Digital Experiences.</p>
+      <p>Frontend Web Designer / UI Designer / Front-End Developer</p>
+    </div>
+  </footer>
+
+  <script>
+    // ==============================
+    // Global helpers
+    // ==============================
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // ==============================
+    // Dynamic year
+    // ==============================
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ==============================
+    // Navbar scroll effect
+    // ==============================
+    const header = document.getElementById("site-header");
+    const updateHeader = () => {
+      header.classList.toggle("navbar-scrolled", window.scrollY > 16);
+    };
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+
+    // ==============================
+    // Mobile menu
+    // ==============================
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    function closeMenu() {
+      mobileMenu.classList.remove("is-open");
+      document.body.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("is-open");
+      document.body.classList.toggle("menu-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    // ==============================
+    // Smooth scroll with fixed header offset
+    // ==============================
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", (event) => {
+        const targetId = anchor.getAttribute("href");
+        if (!targetId || targetId === "#") return;
+
+        const target = document.querySelector(targetId);
+        if (!target) return;
+
+        event.preventDefault();
+        const offset = 88;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+        window.scrollTo({
+          top,
+          behavior: prefersReducedMotion ? "auto" : "smooth"
+        });
+      });
+    });
+
+    // ==============================
+    // Active nav state
+    // ==============================
+    const sections = document.querySelectorAll("main section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.getAttribute("id");
+        navLinks.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+        });
+      });
+    }, {
+      rootMargin: "-35% 0px -58% 0px",
+      threshold: 0
+    });
+
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    // ==============================
+    // Typewriter effect
+    // ==============================
+    const typewriterEl = document.getElementById("typewriter");
+    const typewriterZhEl = document.getElementById("typewriter-zh");
+
+    const typewriterTexts = [
+      {
+        en: "Frontend Design with Purpose",
+        zh: "有策略目的的前端設計"
+      },
+      {
+        en: "UI / UX Meets Clean Code",
+        zh: "讓 UI / UX 與乾淨程式碼相遇"
+      },
+      {
+        en: "SEO-ready, RWD-first Websites",
+        zh: "以 SEO 與 RWD 為基礎打造網站"
+      },
+      {
+        en: "AI-assisted Creative Workflow",
+        zh: "AI 輔助創意與網站工作流程"
+      }
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function runTypewriter() {
+      if (prefersReducedMotion) {
+        typewriterEl.textContent = typewriterTexts[0].en;
+        typewriterZhEl.textContent = typewriterTexts[0].zh;
+        return;
+      }
+
+      const current = typewriterTexts[textIndex];
+      const visibleText = current.en.slice(0, charIndex);
+      typewriterEl.textContent = visibleText;
+      typewriterZhEl.textContent = current.zh;
+
+      let delay = isDeleting ? 42 : 78;
+
+      if (!isDeleting && charIndex < current.en.length) {
+        charIndex += 1;
+      } else if (!isDeleting && charIndex === current.en.length) {
+        delay = 1450;
+        isDeleting = true;
+      } else if (isDeleting && charIndex > 0) {
+        charIndex -= 1;
+      } else {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % typewriterTexts.length;
+        delay = 280;
+      }
+
+      window.setTimeout(runTypewriter, delay);
+    }
+
+    runTypewriter();
+
+    // ==============================
+    // Scroll reveal
+    // ==============================
+    const revealEls = document.querySelectorAll(".reveal");
+
+    if (prefersReducedMotion) {
+      revealEls.forEach((el) => el.classList.add("is-visible"));
+    } else {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, {
+        threshold: 0.14
+      });
+
+      revealEls.forEach((el) => revealObserver.observe(el));
+    }
+
+    // ==============================
+    // White AI tech particle background
+    // Lightweight canvas animation, no external library.
+    // ==============================
+    const canvas = document.getElementById("tech-canvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    let width = 0;
+    let height = 0;
+    let animationFrameId = null;
+
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      createParticles();
+    }
+
+    function createParticles() {
+      const isMobile = width < 768;
+      const count = isMobile ? 28 : 58;
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.34,
+        vy: (Math.random() - 0.5) * 0.34,
+        radius: Math.random() * 1.8 + 0.8
+      }));
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i += 1) {
+        const p = particles[i];
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < -20) p.x = width + 20;
+        if (p.x > width + 20) p.x = -20;
+        if (p.y < -20) p.y = height + 20;
+        if (p.y > height + 20) p.y = -20;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(37, 99, 235, 0.34)";
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j += 1) {
+          const q = particles[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const maxDistance = width < 768 ? 86 : 132;
+
+          if (distance < maxDistance) {
+            const opacity = (1 - distance / maxDistance) * 0.18;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(37, 99, 235, ${opacity})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(drawParticles);
+    }
+
+    if (!prefersReducedMotion) {
+      resizeCanvas();
+      drawParticles();
+      window.addEventListener("resize", resizeCanvas, { passive: true });
+    } else {
+      canvas.style.display = "none";
+    }
+
+    window.addEventListener("beforeunload", () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    });
+  </script>
+</body>
+</html>
